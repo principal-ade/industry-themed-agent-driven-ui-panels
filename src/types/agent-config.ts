@@ -42,6 +42,17 @@ import type { PanelTool } from '@principal-ade/panel-framework-core';
 import type { ReactNode } from 'react';
 
 /**
+ * Agent Tool definition for display purposes.
+ *
+ * Derived from PanelTool but without `tool_call_template` since agent tools
+ * are descriptive - they tell the UI what tools the agent has access to,
+ * but don't define how to invoke them via panel events.
+ *
+ * For tools that emit panel events, use PanelTool from panel-framework-core.
+ */
+export type AgentTool = Omit<PanelTool, 'tool_call_template'>;
+
+/**
  * Skill definition following A2A Protocol Agent Card specification.
  *
  * @see https://a2a-protocol.org/latest/specification/
@@ -233,10 +244,10 @@ export interface AgentConfig {
 
   /**
    * Tools available to the agent.
-   * Uses the PanelTool type from panel-framework-core which is UTCP-compatible.
+   * Uses AgentTool for display purposes (no event binding required).
    * @see https://modelcontextprotocol.io/specification/2025-06-18
    */
-  tools?: PanelTool[];
+  tools?: AgentTool[];
 
   /**
    * Skills following A2A Protocol convention.

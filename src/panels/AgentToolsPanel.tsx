@@ -8,10 +8,10 @@ import {
   Tag,
 } from 'lucide-react';
 import { ThemeProvider, useTheme } from '@principal-ade/industry-theme';
-import type { PanelComponentProps, PanelTool } from '../types';
+import type { AgentToolsPanelPropsTyped, AgentTool } from '../types';
 import type { AgentConfig } from '../types/agent-config';
 
-interface AgentToolsPanelContentProps extends PanelComponentProps {
+export interface AgentToolsPanelContentProps extends AgentToolsPanelPropsTyped {
   /** Agent configuration to display */
   agentConfig?: AgentConfig;
 }
@@ -102,7 +102,7 @@ const SchemaView: React.FC<{ schema: Record<string, unknown>; label: string }> =
 /**
  * Renders a single tool item
  */
-const ToolItem: React.FC<{ tool: PanelTool; index: number; isNarrow: boolean }> = ({
+const ToolItem: React.FC<{ tool: AgentTool; index: number; isNarrow: boolean }> = ({
   tool,
   index,
   isNarrow,

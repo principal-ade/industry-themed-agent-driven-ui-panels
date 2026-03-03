@@ -43,6 +43,8 @@ export type {
 import type {
   PanelEvent,
   PanelEventEmitter as BasePanelEventEmitter,
+  PanelActions as CorePanelActions,
+  PanelComponentProps as CorePanelComponentProps,
 } from '@principal-ade/panel-framework-core';
 
 /**
@@ -57,6 +59,30 @@ export interface PanelEventEmitter extends BasePanelEventEmitter {
   offAll?<T>(handler: (event: PanelEvent<T>) => void): void;
 }
 
+/**
+ * Empty context for panels that don't use any data slices
+ * These panels rely purely on events for communication
+ */
+export interface EmptyPanelContext {}
+
+/**
+ * Typed props for EventBusPanel
+ * No slices needed - uses only the event emitter
+ */
+export type EventBusPanelPropsTyped = CorePanelComponentProps<
+  CorePanelActions,
+  EmptyPanelContext
+>;
+
+/**
+ * Typed props for AgentToolsPanel
+ * No slices needed - receives agent config via props
+ */
+export type AgentToolsPanelPropsTyped = CorePanelComponentProps<
+  CorePanelActions,
+  EmptyPanelContext
+>;
+
 // Agent configuration types
 export type {
   AgentConfig,
@@ -64,5 +90,6 @@ export type {
   AgentSkill,
   AgentCapabilities,
   AgentProvider,
+  AgentTool,
   ResourceRef,
 } from './agent-config';

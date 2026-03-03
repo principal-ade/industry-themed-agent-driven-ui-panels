@@ -1,6 +1,6 @@
 {
   "name": "@industry-theme/agent-driven-ui-panels",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Agent-driven UI panels for displaying system prompts, event bus activity, and other agent internals",
   "type": "module",
   "main": "dist/panels.bundle.js",
@@ -43,18 +43,14 @@
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
+    "@principal-ade/industry-theme": ">=0.1.8",
+    "@principal-ade/panel-framework-core": ">=0.5.1",
+    "@principal-ade/panel-layouts": ">=0.4.0",
+    "@principal-ade/utcp-panel-event": ">=0.1.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   },
-  "peerDependenciesMeta": {
-    "@principal-ade/panel-framework-core": {
-      "optional": true
-    }
-  },
   "dependencies": {
-    "@principal-ade/industry-theme": "^0.1.2",
-    "@principal-ade/panel-framework-core": "^0.1.5",
-    "@principal-ade/utcp-panel-event": "^0.1.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.552.0"
   },

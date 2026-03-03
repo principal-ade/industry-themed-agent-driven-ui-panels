@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Activity, Pause, Play, Trash2, Filter, ChevronDown, ChevronRight, X } from 'lucide-react';
 import { ThemeProvider, useTheme } from '@principal-ade/industry-theme';
-import type { PanelComponentProps, PanelEvent, PanelEventEmitter } from '../types';
+import type {
+  EventBusPanelPropsTyped,
+  PanelEvent,
+  PanelEventEmitter,
+} from '../types';
 
 interface CapturedEvent {
   id: number;
@@ -9,7 +13,7 @@ interface CapturedEvent {
   expanded: boolean;
 }
 
-interface EventBusPanelContentProps extends PanelComponentProps {
+interface EventBusPanelContentProps extends EventBusPanelPropsTyped {
   maxEvents?: number;
 }
 
@@ -554,7 +558,7 @@ const EventBusPanelContent: React.FC<EventBusPanelContentProps> = ({
  * - Color-coded event types
  * - Responsive layout for narrow panels
  */
-export const EventBusPanel: React.FC<PanelComponentProps> = (props) => {
+export const EventBusPanel: React.FC<EventBusPanelPropsTyped> = (props) => {
   return (
     <ThemeProvider>
       <EventBusPanelContent {...props} />

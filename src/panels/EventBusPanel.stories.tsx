@@ -26,6 +26,11 @@ const meta = {
     },
   },
   tags: ['autodocs'],
+  args: {
+    context: createMockContext(),
+    actions: createMockActions(),
+    events: createMockEvents(),
+  },
   decorators: [
     (Story) => (
       <div style={{ height: '100vh', background: '#1a1a1a' }}>
@@ -233,14 +238,14 @@ export const PrePopulated: Story = {
 export const InPanelContext: Story = {
   render: () => {
     const customEvents = createMockEvents({
-      onAll: (handler: (event: PanelEvent) => void) => {
+      onAll: <T,>(handler: (event: PanelEvent<T>) => void) => {
         // Simulate some events
         setTimeout(() => {
           handler({
             type: 'panel:mounted',
             source: 'event-bus-panel',
             timestamp: Date.now(),
-            payload: { panelId: 'event-bus' },
+            payload: { panelId: 'event-bus' } as T,
           });
         }, 500);
         return () => {};

@@ -1,12 +1,12 @@
 import { EventBusPanel } from './panels/EventBusPanel';
 import { AgentToolsPanel } from './panels/AgentToolsPanel';
-import type { PanelDefinition } from './types';
+import type { PanelDefinition } from '@principal-ade/panel-framework-core';
 
 /**
  * Export array of panel definitions.
  * This is the required export for panel extensions.
  */
-export const panels: PanelDefinition[] = [
+export const panels: PanelDefinition<any, any>[] = [
   {
     metadata: {
       id: 'industry-theme.event-bus-panel',
